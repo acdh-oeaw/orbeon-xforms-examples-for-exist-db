@@ -17,11 +17,11 @@
     <xh:head>
         <xh:title>Flickr Search</xh:title>
         <xf:model>
-            <xf:instance id="photos" src="service-search.xql"/>
+            <xf:instance id="photos" src="http://127.0.0.2:8080/apps/orbeon-forms/xforms/xforms-jsp/flickr-search/service-search.xql"/>
             <xf:instance id="query">
                 <query>red</query>
             </xf:instance>
-            <xf:submission id="do-query" method="post" replace="instance" ref="instance('query')" instance="photos" action="service-search.xql"/>
+            <xf:submission id="do-query" method="post" replace="instance" ref="instance('query')" instance="photos" action="http://127.0.0.2:8080/apps/orbeon-forms/xforms/xforms-jsp/flickr-search/service-search.xql"/>
 
         </xf:model>
         <xh:style type="text/css">
@@ -58,7 +58,7 @@
             </xh:div>
             <xh:div class="row">
                 <xh:div class="span9">
-                    <xh:a class="back" href="/home/xforms">Back to Orbeon Forms Examples</xh:a>
+                    <xh:a class="back" href="../../../">Back to Orbeon Forms Examples</xh:a>
                 </xh:div>
             </xh:div>
         </xh:div>

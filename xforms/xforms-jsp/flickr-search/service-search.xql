@@ -13,31 +13,28 @@
 
     The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
 :)
+import module namespace console="http://exist-db.org/xquery/console";
 
-(:
-    response.setContentType("application/xml");
-    final SAXReader xmlReader = new SAXReader(XMLParsing.newXMLReader(XMLParsing.ParserConfiguration.PLAIN));
+declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 
-    // Build URL for query to Flickr
-    String flickrURL = "https://www.flickr.com/services/rest/?method=";
-    if ("POST".equals(request.getMethod())) {
-        // We got a query string
-        final Document queryDocument = xmlReader.read(request.getInputStream());
-        final String query = queryDocument.getRootElement().getStringValue();
-        flickrURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&text=" + URLEncoder.encode(query, "UTF-8");
-    } else {
-        // No query, return interesting photos
-        flickrURL += "flickr.interestingness.getList";
-    }
-    flickrURL += "&per_page=200&api_key=d0c3b54d6fbc1ed217ecc67feb42568b";
+declare option output:method "xml";
+declare option output:media-type "application/xml";
 
-    final Document flickrResponse = xmlReader.read(new URL(flickrURL));
-    final Element photosElement = flickrResponse.getRootElement().element("photos");
-:)
-let $flickrResponse := (), (: TBD :)
-    $photosElement := $flickrResponse//photos
+(: Build URL for query to Flickr :)
+let $flickrURL := "https://www.flickr.com/services/rest/?method=" ||
+                  (if (request:get-method() = 'POST') then
+                  let $query := request:get-data()/*
+                  return "flickr.photos.search&amp;text=" || encode-for-uri($query)
+                  else "flickr.interestingness.getList")
+                  || "&amp;per_page=200&amp;api_key=d0c3b54d6fbc1ed217ecc67feb42568b",
+    $flickrResponse := hc:send-request(
+      <hc:request method = "GET"
+                    href = "{$flickrURL}"
+      />),
+    $photosElements := $flickrResponse//photos/*
+(:    , $log := console:dump():)
 return <photos> {
-    for $photo in $photosElement
+    for $photo in $photosElements
         let $photoURL := "https://static.flickr.com/" || $photo/@server || "/" || $photo/@id
             || "_" || $photo/@secret || "_s.jpg",
             $pageURL := "https://flickr.com/photos/" || $photo/@owner || "/" || $photo/@id || "/"

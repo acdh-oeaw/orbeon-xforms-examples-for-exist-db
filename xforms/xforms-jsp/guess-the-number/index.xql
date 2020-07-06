@@ -11,7 +11,16 @@
 
     The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
 :)
-<xh:html
+import module namespace console="http://exist-db.org/xquery/console";
+
+declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
+
+declare option output:method "xml";
+declare option output:media-type "application/xml";
+
+let $rng := random-number-generator()
+
+return <xh:html
     xmlns:xf="http://www.w3.org/2002/xforms"
     xmlns:xxf="http://orbeon.org/oxf/xml/xforms"
     xmlns:xh="http://www.w3.org/1999/xhtml"
@@ -22,7 +31,7 @@
         <xf:model xxf:expose-xpath-types="true">
             <xf:instance>
                 <number>
-                    <answer>{()}</answer>
+                    <answer>{xs:integer($rng?next()?number * 100)}</answer>
                     <guess/>
                 </number>
             </xf:instance>
@@ -80,7 +89,7 @@
             </xh:div>
             <xh:div class="row">
                 <xh:div class="span9">
-                    <xh:a class="back" href="/home/xforms">Back to Orbeon Forms Examples</xh:a>
+                    <xh:a class="back" href="../../../">Back to Orbeon Forms Examples</xh:a>
                 </xh:div>
             </xh:div>
         </xh:div>

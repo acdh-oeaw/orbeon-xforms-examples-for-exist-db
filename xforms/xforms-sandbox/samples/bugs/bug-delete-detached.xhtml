@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:widget="http://orbeon.org/oxf/xml/widget" xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:xdt="http://www.w3.org/2005/xpath-datatypes" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xs="http://www.w3.org/2001/XMLSchema" lang="en">
+    <xh:head>
+        <xf:model id="model">
+            <xf:instance id="instance">
+                <instance>
+                    <company>
+                        <employee>Mary</employee>
+                    </company>
+                </instance>
+            </xf:instance>
+        </xf:model>
+    </xh:head>
+    <xh:body>
+
+        <xf:repeat ref="company">
+            <xf:input ref="employee">
+                <xf:delete ev:event="xforms-disabled" ref=".."/>
+            </xf:input>
+            <xf:trigger>
+                <xf:label>Delete</xf:label>
+                <xf:delete ev:event="DOMActivate" ref="."/>
+            </xf:trigger>
+        </xf:repeat>
+
+    </xh:body>
+</xh:html>

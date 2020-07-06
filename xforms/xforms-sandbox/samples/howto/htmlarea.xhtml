@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xf="http://www.w3.org/2002/xforms">
+
+    <head>
+        <title>XForms HTML Area</title>
+        <xf:model xmlns:xs="http://www.w3.org/2001/XMLSchema" id="main-model">
+            <xf:instance xxf:exclude-result-prefixes="#all">
+                <content xmlns="">
+                    In the Orbeon Forms HTML area, you can use different:&lt;br /&gt;&lt;ul&gt;&lt;li&gt;fonts like times or courrier&lt;/li&gt;&lt;li&gt;&lt;font size="3"&gt;sizes&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="background-color: rgb(255, 153, 0);"&gt;background colors&lt;/span&gt; or &lt;span style="color: rgb(255, 102, 0);"&gt;text colors&lt;/span&gt;&lt;span style="background-color: rgb(255, 153, 0);"&gt;&lt;br /&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;font styles like &lt;span style="font-weight: bold;"&gt;bold &lt;/span&gt;or &lt;span style="font-style: italic;"&gt;italic&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;
+                </content>
+            </xf:instance>
+        </xf:model>
+    </head>
+    <body>
+        <xf:textarea mediatype="text/html" ref="."/>
+        <br/>
+        <xf:output mediatype="text/html" ref="."/>
+        <br/>
+        <fr:xforms-inspector xmlns:fr="http://orbeon.org/oxf/xml/form-runner"/>
+    </body>
+</html>

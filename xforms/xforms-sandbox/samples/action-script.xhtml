@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:widget="http://orbeon.org/oxf/xml/widget" xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xh:head>
+        <xf:model>
+            <xf:instance id="instance">
+                <instance/>
+            </xf:instance>
+        </xf:model>
+    </xh:head>
+    <xh:body>
+        <xf:group id="my-group">
+            <xf:action type="javascript" ev:event="DOMActivate">
+                document.getElementById("out").innerHTML = this.id + " " + event.target.id;
+            </xf:action>
+            <xf:trigger id="my-trigger">
+                <xf:label>Press me</xf:label>
+            </xf:trigger>
+        </xf:group>
+        <xh:p id="out"/>
+    </xh:body>
+</xh:html>

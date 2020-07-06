@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2004 Orbeon, Inc.
+  
+    This program is free software; you can redistribute it and/or modify it under the terms of the
+    GNU Lesser General Public License as published by the Free Software Foundation; either version
+    2.1 of the License, or (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+    without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU Lesser General Public License for more details.
+  
+    The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
+-->
+<xpl>&lt;!-- Computes the total salaries for each department --&gt;
+&lt;p:config xmlns:p="http://www.orbeon.com/oxf/pipeline"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          xmlns:oxf="http://www.orbeon.com/oxf/processors"&gt;
+
+    &lt;p:param name="data" type="input"/&gt;
+    &lt;p:param name="data" type="output"/&gt;
+
+    &lt;p:for-each href="#data" select="/company/department" ref="data" root="company"&gt;
+        &lt;p:processor name="oxf:xslt"&gt;
+            &lt;p:input name="data" href="current()"/&gt;
+            &lt;p:input name="config"&gt;
+                &lt;department name="{/department/@name}" 
+                    total-salaries="{sum(/department/employee/@salary)}" xsl:version="2.0"/&gt;
+            &lt;/p:input&gt;
+            &lt;p:output name="data" ref="data"/&gt;
+        &lt;/p:processor&gt;
+    &lt;/p:for-each&gt;
+
+&lt;/p:config&gt;</xpl>

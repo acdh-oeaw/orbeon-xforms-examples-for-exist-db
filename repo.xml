@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Orbeon XFroms examples ported to plain exist-db</description>
+    <author>Omar Siam</author>
+    <author>ACDHCH ÖAW</author>
+    <author>Orbeon, Inc.</author>
+    <website>https://github.com/orbeon/orbeon-forms</website>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>orbeon-forms</target>
+    <prepare/>
+    <finish/>
+
+<deployed>2020-07-06T14:45:31.71Z</deployed>
+</meta>

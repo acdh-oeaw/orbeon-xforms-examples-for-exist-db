@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (C) 2009 Orbeon, Inc.
+
+  This program is free software; you can redistribute it and/or modify it under the terms of the
+  GNU Lesser General Public License as published by the Free Software Foundation; either version
+  2.1 of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  See the GNU Lesser General Public License for more details.
+
+  The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
+  -->
+<xh:html xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:exf="http://www.exforms.org/exf/1-0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xh:head>
+        <xh:title>XBL Component Inheriting Readonly</xh:title>
+        <xf:model id="main-model">
+            <xf:instance id="main-instance">
+                <values>
+                    <selection/>
+                    <clicked/>
+                </values>
+            </xf:instance>
+            <xf:bind ref="selection" relevant=". != 'true'"/>
+        </xf:model>
+    </xh:head>
+    <xh:body>
+
+        <xh:p>
+            In this example, as of 2009-03-18, we don't dispatch xforms-value-changed when the control becomes
+            non-relevant, so the setvalue doesn't fire when you select the checkbox and <code>&lt;clicked&gt;</code>
+            remains empty. We are considering changing this behavior.
+        </xh:p>
+
+        <xf:group>
+            <xf:select ref="selection" appearance="full">
+                <xf:label/>
+                <xf:item>
+                    <xf:label>Select me</xf:label>
+                    <xf:value>true</xf:value>
+                </xf:item>
+            </xf:select>
+
+            <xf:setvalue ev:event="xforms-value-changed" ref="clicked">true</xf:setvalue>
+        </xf:group>
+
+        <fr:xforms-inspector/>
+
+    </xh:body>
+</xh:html>

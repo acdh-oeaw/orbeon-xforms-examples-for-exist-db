@@ -35,7 +35,14 @@ declare function local:force-xml-mime-type-xbl() as xs:string* {
     return if (exists($doc)) then xdb:store($forms-includes, $r, $doc, 'application/xml') else ()
 };
 
+declare function local:create-data-dirs() as xs:string* {
+    let $data-in-dirs := ('xforms-bookcast')
+    return for $data-in-dir in $data-in-dirs
+    return (
+        sm:chmod(xs:anyURI(xmldb:create-collection(concat($target, '/data'), $data-in-dir)), 'rwxrwxrwx')
+    )
+};
 (: set options and admin password passed as environment variables :)
 (:local:set-options(),:)
 (:local:force-xml-mime-type-xbl():)
-()
+local:create-data-dirs()

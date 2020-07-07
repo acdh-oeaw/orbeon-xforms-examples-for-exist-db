@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Copyright (C) 2009 Orbeon, Inc.
 
@@ -11,7 +12,7 @@
 
   The full text of the license is available at http://www.gnu.org/copyleft/lesser.html
   -->
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xf="http://www.w3.org/2002/xforms">
     <head>
         <title>XForms Bookcast</title>
         <link rel="alternate" type="application/atom+xml" title="Orbeon XForms Bookcast Tutorial Feed" href="atom"/>
@@ -149,10 +150,10 @@
             </xf:instance>
 
             <!-- Submission to get the document containing all the books -->
-            <xf:submission id="list-submission" serialization="none" method="get" action="/exist/rest/db/orbeon/xforms-bookcast/books.xml" replace="instance" instance="books-instance"/>
+            <xf:submission id="list-submission" serialization="none" method="get" action="http://127.0.0.2:8080/apps/orbeon-forms/data/xforms-bookcast/books.xml" replace="instance" instance="books-instance"/>
 
             <!-- Submission to save the document containing all the books -->
-            <xf:submission id="save-submission" ref="instance('books-instance')" action="/exist/rest/db/orbeon/xforms-bookcast/books.xml" method="put" replace="none">
+            <xf:submission id="save-submission" ref="instance('books-instance')" action="http://127.0.0.2:8080/apps/orbeon-forms/data/xforms-bookcast/books.xml" method="put" replace="none">
                 <xf:message ev:event="xforms-submit-error" level="modal">An error occurred while saving!</xf:message>
             </xf:submission>
 

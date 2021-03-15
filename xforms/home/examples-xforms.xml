@@ -21,7 +21,7 @@
         This example shows powerful aspect of XForms in a compact example:
         declarative binds, repeats, dynamic sets of items and dynamic rules.
     </example>
-    <example title="XForms Bookcast" href="../xforms-bookcast/view.xhtml" img="images/xforms-bookcast-small.jpg" size="4" source="http://www.flickr.com/photos/osiatynska/3287986172/">
+    <example title="XForms Bookcast" href="../xforms-bookcast/" img="images/xforms-bookcast-small.jpg" size="4" source="http://www.flickr.com/photos/osiatynska/3287986172/">
         The <xh:i>Bookcast</xh:i> app is part of the Orbeon <xh:a href="https://doc.orbeon.com/xforms/tutorial/introduction.html">XForms tutorial</xh:a>.
         It shows simple XRX-style database access, repeats, and more.
     </example>

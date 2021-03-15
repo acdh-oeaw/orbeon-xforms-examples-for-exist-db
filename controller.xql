@@ -11,7 +11,7 @@ switch (true())
     (: boiler plate logic to redirect to index.html in all variants people usually use :)
     case $exist:path = '' return
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <redirect url="/apps/{$exist:controller}/example-xforms.xml"/>
+        <redirect url="/apps/{$exist:controller}/examples-xforms.xml"/>
       </dispatch>
     case $exist:path = '/' return
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

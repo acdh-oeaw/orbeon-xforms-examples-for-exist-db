@@ -24,7 +24,7 @@ switch (true())
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="upload-view.xhtml"/>
       </dispatch>
-    case $exist:path = '/sertvice/get-file' return 
+    case $exist:path = '/service/get-files' return 
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="../get-files.xql"/>
       </dispatch>

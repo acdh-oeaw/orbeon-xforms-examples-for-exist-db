@@ -9,21 +9,21 @@ declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
 
-util:log-system-out('/db/apps/'||$exist:controller||$exist:path||'page-flow.xml'),
+util:log-system-out('/db/apps'||$exist:controller||$exist:path||'page-flow.xml'),
 switch (true())
     case contains($exist:path, '/images/') or contains($exist:path, '/img/') return 
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="/apps/{replace($exist:controller, '/xforms' ,'/xforms-xml', 'q')}{$exist:path}"/>
       </dispatch>
-    case (ends-with($exist:path, '/') and doc-available('/db/apps/'||$exist:controller||$exist:path||'page-flow.xml')) return
+    case (ends-with($exist:path, '/') and doc-available('/db/apps'||$exist:controller||$exist:path||'page-flow.xml')) return
       let $page-flow := doc('/db/apps'||$exist:controller||$exist:path||'page-flow.xml'),
-          $default-page := ($page-flow/oxfc:controller/oxfc:page[@path = ('*', $exist:path)]/@view, 'view.xhtml')
+          $default-page := ($page-flow/oxfc:controller/oxfc:page[@path = ('*', $exist:path)]/@view, 'view.xhtml')[1]
       return <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{$default-page}"/>
       </dispatch>
-    case (xmldb:collection-available('/db/apps/'||$exist:controller||$exist:path) and doc-available('/db/apps/'||$exist:controller||$exist:path||'/page-flow.xml')) return
+    case (xmldb:collection-available('/db/apps'||$exist:controller||$exist:path) and doc-available('/db/apps'||$exist:controller||$exist:path||'/page-flow.xml')) return
       let $page-flow := doc('/db/apps'||$exist:controller||$exist:path||'/page-flow.xml'),
-          $default-page := ($page-flow/oxfc:controller/oxfc:page[@path = ('*', $exist:path)]/@view, 'view.xhtml')
+          $default-page := ($page-flow/oxfc:controller/oxfc:page[@path = ('*', $exist:path)]/@view, 'view.xhtml')[1]
       return <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{substring($exist:path, 2)}/{$default-page}"/>
       </dispatch>

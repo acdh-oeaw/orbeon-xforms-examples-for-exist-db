@@ -14,4 +14,4 @@ declare function local:get-collections($collection) {
     return <directory name="{replace($collection, $root, '')}">{$subcollections!(local:get-collections(.)), $resources}</directory>
 };
 
-local:get-collections($root||'/samples'),util:log-system-out('get-files')
+local:get-collections($root||'/samples')

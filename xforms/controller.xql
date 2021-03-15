@@ -9,7 +9,6 @@ declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
 
-util:log-system-out('/db/apps'||$exist:controller||$exist:path||'page-flow.xml'),
 switch (true())
     case contains($exist:path, '/images/') or contains($exist:path, '/img/') return 
       <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

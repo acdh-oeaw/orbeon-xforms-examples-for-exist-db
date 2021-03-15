@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Copyright (C) 2009 Orbeon, Inc.
 
@@ -44,8 +43,8 @@
             <xf:instance id="samples-instance">
                 <directory xmlns=""/>
             </xf:instance>
-            <xf:submission id="upload-submission" method="post" replace="all" action="/xforms-sandbox/run"/>
-            <xf:submission id="samples-submission" method="get" replace="instance" instance="samples-instance" action="/xforms-sandbox/service/get-files" serialization="none"/>
+            <xf:submission id="upload-submission" method="post" replace="all" action="/apps/orbeon-forms/xforms/xforms-sandbox/run"/>
+            <xf:submission id="samples-submission" method="get" replace="instance" instance="samples-instance" action="http://127.0.0.2:8080/apps/orbeon-forms/xforms/xforms-sandbox/service/get-files" serialization="none"/>
         </xf:model>
         <!-- Just put grids CSS otherwise overall style differs from that of other examples -->
         <xh:link rel="stylesheet" href="/ops/yui/grids/grids-min.css" type="text/css" media="all"/>
@@ -87,7 +86,7 @@
                     <fr:label>Run From the Web</fr:label>
                     <xf:setvalue ev:event="xforms-select" ref="action">download</xf:setvalue>
                     <xf:group>
-                        <xf:load ev:event="DOMActivate" if="file[2]/@valid = 'true'" resource="/xforms-sandbox/run?url={file[2]}"/>
+                        <xf:load ev:event="DOMActivate" if="file[2]/@valid = 'true'" resource="/apps/orbeon-forms/xforms/xforms-sandbox/run?url={file[2]}"/>
                         <xf:input ref="file[2]" xxf:size="65" incremental="true">
                             <xf:label>Please enter the HTTP URL of the XHTML + XForms to download from the web and run</xf:label>
                             <xf:alert>Please enter a valid HTTP URL (starting with "http://")</xf:alert>
@@ -102,7 +101,7 @@
                     <fr:label>Test Samples</fr:label>
                     <xf:setvalue ev:event="xforms-select" ref="action">download</xf:setvalue>
                     <xf:group>
-                        <xf:load ev:event="DOMActivate" if="sample != ''" resource="/xforms-sandbox/sample/{sample}"/>
+                        <xf:load ev:event="DOMActivate" if="sample != ''" resource="http://localhost:8080/apps/orbeon-forms/xforms/xforms-sandbox/samples/{sample}.xhtml"/>
                         <xf:select1 ref="sample">
                             <xf:label>Please select one of the <xf:output value="count(instance('samples-instance')/file)"/> existing XForms test samples from the list</xf:label>
                             <xf:item>

@@ -1,4 +1,4 @@
-Orbeon XFroms Examples
+Orbeon XForms Examples
 ======================
 
 Prerequisites
